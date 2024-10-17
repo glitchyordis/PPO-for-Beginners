@@ -163,6 +163,11 @@ class PPO:
 				batch_log_probs - the log probabilities of each action taken this batch. Shape: (number of timesteps)
 				batch_rtgs - the Rewards-To-Go of each timestep in this batch. Shape: (number of timesteps)
 				batch_lens - the lengths of each episode this batch. Shape: (number of episodes)
+
+    			see following for why keep track of log prob instead of raw action prob
+			- https://cs.stackexchange.com/questions/70518/why-do-we-use-the-log-in-gradient-based-reinforcement-algorithms
+			- https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html#deriving-the-simplest-policy-gradient:~:text=2.%20The%20Log%2DDerivative%20Trick.%20The%20log%2Dderivative,combined%20with%20chain%20rule%2C%20we%20get%3A
+			TL;DR: makes gradient ascent easier behind the scenes
 		"""
 		# Batch data. For more details, check function header.
 		batch_obs = []
